@@ -17,7 +17,20 @@
           "after": " Responsive Design - Works "
         }
       },
-      "comments": []
+      "comments": [
+        {
+          "id": "comment-1770447447598",
+          "author": {
+            "login": "you",
+            "avatarUrl": ""
+          },
+          "body": "What do you think of this?",
+          "mentions": [],
+          "suggestedEdit": null,
+          "createdAt": "2026-02-07T06:57:27.598Z",
+          "updatedAt": null
+        }
+      ]
     }
   ]
 }
