@@ -9,7 +9,7 @@ This guide provides detailed instructions for deploying the Secure Photo Uploade
 - [Python 3.8+](https://python.org) installed
 - [Docker](https://docker.com) (optional, for local container testing)
 
-## Deployment Options are awesome!
+## Deployment Options
 
 ### Option 1: Automated Deployment with Azure Developer CLI (Recommended)
 
