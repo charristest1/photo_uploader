@@ -14,24 +14,27 @@ This guide provides detailed instructions for deploying the Secure Photo Uploade
 ### Option 1: Automated Deployment with Azure Developer CLI (Recommended)
 
 1. **Clone and Initialize**
+
    ```powershell
    cd photo_uploader
    azd auth login
    ```
 
 2. **Deploy Infrastructure and Application**
+
    ```powershell
    azd up
    ```
-   
+
    This command will:
+
    - Provision Azure resources (Storage, Container Registry, Container Apps, etc.)
    - Build and deploy the FastAPI application
    - Configure managed identity and RBAC permissions
    - Output the application URL
 
-3. **Access Your Application**
-   After deployment, `azd up` will output the application URL:
+3. **Access Your Application**After deployment, `azd up` will output the application URL:
+
    ```
    SUCCESS: Your app is running at: https://ca-abc123.region.azurecontainerapps.io
    ```
@@ -78,7 +81,7 @@ az containerapp update \
 The application automatically configures these environment variables in Azure:
 
 | Variable | Description | Set By |
-|----------|-------------|---------|
+| --- | --- | --- |
 | `AZURE_STORAGE_ACCOUNT_NAME` | Storage account name | Bicep template |
 | `AZURE_PHOTO_CONTAINER_NAME` | Container name for photos | Bicep template |
 | `AZURE_USER_ASSIGNED_IDENTITY_CLIENT_ID` | Managed identity client ID | Bicep template |
@@ -202,18 +205,21 @@ az containerapp revision copy \
 ### Common Issues
 
 1. **Application not starting**
+
    ```powershell
    # Check container app logs
    az containerapp logs show --name "ca-abc123" --resource-group "rg-photo-uploader-prod" --follow
    ```
 
 2. **Authentication errors**
+
    ```powershell
    # Verify managed identity permissions
    az role assignment list --assignee "MANAGED_IDENTITY_OBJECT_ID" --scope "/subscriptions/SUBSCRIPTION_ID/resourceGroups/rg-photo-uploader-prod/providers/Microsoft.Storage/storageAccounts/stab123"
    ```
 
 3. **Image pull errors**
+
    ```powershell
    # Check container registry access
    az acr check-health --name "crab123"
@@ -222,17 +228,20 @@ az containerapp revision copy \
 ### Debugging Steps
 
 1. **Check Resource Status**
+
    ```powershell
    az containerapp show --name "ca-abc123" --resource-group "rg-photo-uploader-prod" --query "properties.provisioningState"
    ```
 
 2. **Validate Network Connectivity**
+
    ```powershell
    # Test from container app to storage account
    az containerapp exec --name "ca-abc123" --resource-group "rg-photo-uploader-prod" --command "nslookup stab123.blob.core.windows.net"
    ```
 
 3. **Review Configuration**
+
    ```powershell
    az containerapp show --name "ca-abc123" --resource-group "rg-photo-uploader-prod" --query "properties.template.containers[0].env"
    ```
@@ -317,6 +326,7 @@ az group export --name "rg-photo-uploader-prod" > backup-template.json
 ## Support
 
 For issues and questions:
+
 - Review the [troubleshooting section](#troubleshooting)
 - Check [Azure Container Apps documentation](https://docs.microsoft.com/azure/container-apps/)
 - Open an issue in the project repository
