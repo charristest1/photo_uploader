@@ -17,7 +17,20 @@
           "after": " Option 1: Automated Deployme"
         }
       },
-      "comments": []
+      "comments": [
+        {
+          "id": "comment-1770447676228",
+          "author": {
+            "login": "you",
+            "avatarUrl": ""
+          },
+          "body": "how many options",
+          "mentions": [],
+          "suggestedEdit": null,
+          "createdAt": "2026-02-07T07:01:16.228Z",
+          "updatedAt": null
+        }
+      ]
     }
   ]
 }
