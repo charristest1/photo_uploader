@@ -5,6 +5,7 @@ A sleek, production-ready FastAPI web application for uploading photos to Azure 
 ## ✨ Features
 
 ### 🌟 Modern Web Interface
+
 - **Sleek FastAPI Application** - Modern, responsive web interface
 - **Drag & Drop Upload** - Intuitive file upload with drag-and-drop support
 - **Real-time Progress** - Visual upload progress and feedback
@@ -16,23 +17,27 @@ A sleek, production-ready FastAPI web application for uploading photos to Azure 
 This solution implements **zero-trust security principles** and Azure security best practices:
 
 ### Authentication & Authorization
+
 - ✅ **Azure Managed Identity** - No hardcoded keys or secrets
 - ✅ **Azure RBAC** - Fine-grained access control using built-in roles
 - ✅ **Principle of Least Privilege** - Minimal required permissions only
 - ✅ **Identity-based Authentication** - Shared key access disabled
 
 ### Data Protection
+
 - ✅ **HTTPS Only** - All communications encrypted in transit (TLS 1.2+)
 - ✅ **Encryption at Rest** - Server-side encryption with infrastructure encryption
 - ✅ **Private Container Access** - No anonymous access allowed
 - ✅ **Blob Versioning** - Data protection and recovery capabilities
 
 ### Network Security
+
 - ✅ **Configurable Network Access** - Can be restricted to private endpoints
 - ✅ **IP Whitelisting Support** - Network-level access controls
 - ✅ **Azure Services Bypass** - Secure access for trusted Azure services
 
 ### Compliance & Monitoring
+
 - ✅ **Audit Trail** - Comprehensive logging and monitoring
 - ✅ **Retention Policies** - Automated data lifecycle management
 - ✅ **Change Feed** - Track all blob modifications
@@ -112,6 +117,7 @@ python start.py
 ```
 
 The web application will be available at:
+
 - **Main App**: http://localhost:8000
 - **API Docs**: http://localhost:8000/api/docs
 - **Gallery**: http://localhost:8000/gallery
@@ -130,20 +136,20 @@ After deployment, your app will be available at the generated Container App URL.
 ### Environment Variables
 
 | Variable | Description | Required | Example |
-|----------|-------------|----------|---------|
+| --- | --- | --- | --- |
 | `AZURE_STORAGE_ACCOUNT_NAME` | Storage account name | Yes | `st7a8b9c0d1e2f3` |
 | `AZURE_PHOTO_CONTAINER_NAME` | Container name for photos | No | `photos` (default) |
-| `AZURE_USER_ASSIGNED_IDENTITY_CLIENT_ID` | Managed identity client ID | No* | `12345678-1234-1234-1234-123456789abc` |
+| `AZURE_USER_ASSIGNED_IDENTITY_CLIENT_ID` | Managed identity client ID | No\* | `12345678-1234-1234-1234-123456789abc` |
 
-*Required when using user-assigned managed identity. Falls back to DefaultAzureCredential if not provided.
+\*Required when using user-assigned managed identity. Falls back to DefaultAzureCredential if not provided.
 
 ### Infrastructure Parameters
 
 | Parameter | Description | Default | Options |
-|-----------|-------------|---------|---------|
-| `environmentName` | Environment name for resources | - | `dev`, `prod`, etc. |
-| `location` | Azure region | - | `eastus`, `westeurope`, etc. |
-| `principalId` | User principal ID for RBAC | - | Your Azure AD user ID |
+| --- | --- | --- | --- |
+| `environmentName` | Environment name for resources | \- | `dev`, `prod`, etc. |
+| `location` | Azure region | \- | `eastus`, `westeurope`, etc. |
+| `principalId` | User principal ID for RBAC | \- | Your Azure AD user ID |
 
 ## 🔧 Advanced Configuration
 
@@ -262,25 +268,31 @@ print(f"Uploaded: {result['blob_url']}")
 ### Common Issues
 
 **Authentication Errors**
+
 ```
 ClientAuthenticationError: Authentication failed
 ```
+
 - ✅ Verify you're logged into Azure CLI: `az login`
 - ✅ Check your managed identity has the correct RBAC roles
 - ✅ Ensure the storage account has shared key access disabled
 
 **Permission Errors**
+
 ```
 Access denied to container 'photos'
 ```
+
 - ✅ Verify RBAC role assignments in the Azure portal
 - ✅ Check the managed identity is assigned to the storage account
 - ✅ Wait a few minutes for role assignments to propagate
 
 **Container Not Found**
+
 ```
 ResourceNotFoundError: Container 'photos' not found
 ```
+
 - ✅ Check the container was created during deployment
 - ✅ Verify the container name in environment variables
 - ✅ Check storage account and container exist in the portal
@@ -288,17 +300,20 @@ ResourceNotFoundError: Container 'photos' not found
 ### Debugging Steps
 
 1. **Check Authentication**:
+
    ```powershell
    az account show  # Verify logged in user
    az identity show --name "id-<your-resource-token>" --resource-group "<your-rg>"
    ```
 
 2. **Verify RBAC Assignments**:
+
    ```powershell
    az role assignment list --assignee "<managed-identity-principal-id>" --scope "<storage-account-id>"
    ```
 
 3. **Test Storage Access**:
+
    ```powershell
    az storage blob list --container-name "photos" --account-name "<storage-account-name>" --auth-mode login
    ```
