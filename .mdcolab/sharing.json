@@ -2,9 +2,10 @@
   "version": 1,
   "documents": {
     "README.md": {
-      "mode": "anyone_with_link",
+      "mode": "specific_people",
+      "users": [],
       "sharedBy": "charristest1",
-      "sharedAt": "2026-02-11T03:11:18.133Z"
+      "sharedAt": "2026-02-11T03:11:25.191Z"
     }
   }
 }
