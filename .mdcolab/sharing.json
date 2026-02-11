@@ -1,0 +1,13 @@
+{
+  "version": 1,
+  "documents": {
+    "README.md": {
+      "mode": "specific_people",
+      "users": [
+        "charris-msft"
+      ],
+      "sharedBy": "charristest1",
+      "sharedAt": "2026-02-11T02:37:52.847Z"
+    }
+  }
+}
