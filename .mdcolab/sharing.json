@@ -3,8 +3,9 @@
   "documents": {
     "README.md": {
       "mode": "anyone_with_link",
+      "allowEditing": true,
       "sharedBy": "charristest1",
-      "sharedAt": "2026-02-13T23:21:55.397Z"
+      "sharedAt": "2026-02-13T23:22:25.230Z"
     }
   }
 }
