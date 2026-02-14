@@ -1,6 +1,6 @@
 # �️ Secure Photo Uploader - FastAPI Web Application
 
-A sleek, production-ready FastAPI web application for uploading photos to Azure Blob Storage with enterprise-grade security using Azure RBAC (Role-Based Access Control) and managed identity.
+A sleek, amazing, production-ready FastAPI web application for uploading photos to Azure Blob Storage with enterprise-grade security using Azure RBAC (Role-Based Access Control) and managed identity.
 
 ✨ Features
 
